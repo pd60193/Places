@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<base href="/">
+	<title>Places</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+	<link rel="stylesheet" href="/AngularJSViews/min/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)"
+	href="/AngularJSViews/min/style-small.css" />
+	<script src="/lib/jquery.js"></script>	
+	<script src="/lib/moment.js"></script>
+	
+	<script src="/lib/angular.js"></script>
+	<script src="/lib/angular-ui-router.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-animate.js"></script>
+	<script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTgAS16RiZZhtLWhto1WaS8Zi6p5xD950&libraries=places">
+    </script>
+	<script src="/AngularJSViews/app.js"></script>
+	<script src="/AngularJSViews/app-config.js"></script>
+	<script src="/AngularJSViews/controllers/search.controller.js"></script>
+	<script src="/AngularJSViews/controllers/place.controller.js"></script>
+	<script src="/AngularJSViews/controllers/details.controller.js"></script>
+	<script src="/AngularJSViews/controllers/details.info.controller.js"></script>
+	<script src="/AngularJSViews/controllers/details.photo.controller.js"></script>
+	<script src="/AngularJSViews/controllers/details.map.controller.js"></script>
+	<script src="/AngularJSViews/controllers/details.reviews.controller.js"></script>
+	<script src="/AngularJSViews/controllers/favorites.controller.js"></script>
+	<script src="/AngularJSViews/services/google.service.js"></script>
+	<script src="/AngularJSViews/services/page.service.js"></script>
+	<script src="/AngularJSViews/services/utils.service.js"></script>
+	<script src="/AngularJSViews/services/maps.service.js"></script>
+	<script src="/AngularJSViews/services/favorite.service.js"></script>
+	<script src="/AngularJSViews/services/yelp.service.js"></script>
+	<script src="/AngularJSViews/factories/data.factory.js"></script>
+	<script src="/AngularJSViews/factories/common.factory.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+	
+</head>
+<body ng-app="TES" >
+	<div ui-view="searchView">
+	</div>
+	
+	<div id="showDiv" id="view"  ui-view="resultsView">
+	</div>
+</body>
+</html>

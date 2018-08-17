@@ -1,0 +1,83 @@
+<div class="container">
+<!-- 
+<div class="row">
+		<div class="col-sm-1"></div> -->
+		<div class="progress mt-4" ng-if="displayLoader">
+			<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{valuenow;}}" aria-valuemin="0" aria-valuemax="100" style="width: {{valuenow}}%;">
+			</div>
+		</div>
+<!-- 		<div class="col-sm-1"></div>
+</div> -->
+</div>
+<div class="container">
+<!-- <div class="row"> -->
+	<!-- <div class="col-sm-1"></div> -->
+	<table id="infoTable" class="table table-striped" >
+	  
+	  <tbody>
+		
+	    <tr ng-if="dic.DataFactory.placeDetails.formatted_address">
+	      <td>Address</td>
+	      <td ng-bind="dic.DataFactory.placeDetails.formatted_address"></td>
+	    </tr>
+	    <tr ng-if="dic.DataFactory.placeDetails.international_phone_number">
+	      <td>Phone Number</td>
+	      <td ng-bind="dic.DataFactory.placeDetails.international_phone_number"></td>
+	    </tr>
+	    <tr ng-if="dic.DataFactory.placeDetails.price_level">
+	      <td>Price Level</td>
+	      <td ng-bind="dic.DataFactory.placeDetails.price_level"></td>
+	    </tr>
+		<tr ng-if="dic.DataFactory.placeDetails.rating">
+	      <td>Rating</td>
+	      <td>
+			{{dic.DataFactory.placeDetails.rating}}<rate-yo id="infoRatings" normalcolor="dic.fillColor" rating="dic.DataFactory.placeDetails.rating" class="mc-doc-rating"></rate-yo>
+			<!-- <span  id="infoRatings" data-ng-init="dic.init()"></span> -->
+		  </td>
+	    </tr>
+		<tr ng-if="dic.DataFactory.placeDetails.url">
+	      <td>Google Page</td>
+	      <td><a target="_blank" href="{{dic.DataFactory.placeDetails.url}}" ng-bind="dic.DataFactory.placeDetails.url"></a></td>
+	    </tr>
+		<tr ng-if="dic.DataFactory.placeDetails.website">
+	      <td>Website</td>
+	      <td><a target="_blank" href="{{dic.DataFactory.placeDetails.website}}" ng-bind="dic.DataFactory.placeDetails.website"></a></td>
+	    </tr>
+		<tr ng-if="dic.DataFactory.placeDetails.opening_hours">
+	      <td>Hours</td>
+	      <td ng-if="dic.DataFactory.placeDetails.opening_hours"><span ng-bind="dic.loadHours(dic.DataFactory.today,false)"></span>&emsp;<a href="" data-target="#openHoursModal" data-toggle="modal" ng-if="dic.DataFactory.placeDetails.opening_hours">Daily open hours</a></td>
+	    </tr>
+	  </tbody>
+	</table>
+<!-- 	<div class="col-sm-1"></div> -->
+<!-- </div> -->
+</div>
+<div ng-if="dic.DataFactory.placeDetails" class="modal fade" id="openHoursModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Open Hours</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+			<tbody>
+				<tr>
+					<td><b>{{dic.daysOfWeek[(dic.DataFactory.today)%7]}}</b></td>
+					<td><b>{{dic.loadHours((dic.DataFactory.today)%7,true)}}</b></td>
+				</tr>
+				<tr ng-repeat="i in [1, 2, 3, 4, 5, 6]">
+					<td>{{dic.daysOfWeek[(dic.DataFactory.today+i)%7]}}</td>
+					<td>{{dic.loadHours((dic.DataFactory.today+i)%7,true)}}</td>
+				</tr>
+			</tbody>
+		</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

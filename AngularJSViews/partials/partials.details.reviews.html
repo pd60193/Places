@@ -1,0 +1,77 @@
+<div class="container">
+<div class="row mt-2 ml-1">
+	<!-- <div class="col-sm-1"></div> -->
+	
+	<div class="dropdown col-xs-2">
+		<button class="btn btn-secondary dropdown-toggle" type="button" ng-init="dmr.currentReviewType=dmr.reviewTypes[0]" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		{{dmr.currentReviewType}}
+		</button>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			<button class="dropdown-item" ng-click="dmr.changeReviewType(reviewtype)" ng-repeat ='reviewtype in dmr.reviewTypes' type="button">{{reviewtype}}</button>
+		</div>
+
+	</div>
+	<div class="dropdown col-xs-2 ml-2">
+		<button class="btn btn-secondary dropdown-toggle" type="button" ng-init="dmr.currentReviewOrder=dmr.reviewOrders[0]" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		{{dmr.currentReviewOrder}}
+		</button>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			<button class="dropdown-item" ng-click="dmr.changeOrderType(revieworder)" ng-repeat ='revieworder in dmr.reviewOrders' type="button">{{revieworder}}</button>
+		</div>
+	</div>
+	
+</div>
+</div>
+<div class="container">
+<!-- ng-if="dmr.DataFactory.reviews && dmr.currentReviewType=='Google Reviews'" -->
+<div  class="mt-3 fade-in-out" ng-show="dmr.DataFactory.reviews && dmr.currentReviewType=='Google Reviews'">
+	<div class="row" >
+		<!-- <div class="col-sm-1"></div> -->
+		
+		<table class="table reviewTable table-bordered col-sm-12 mx-2">
+			<tr ng-repeat="review in dmr.DataFactory.reviews[0] |orderBy: dmr.currentOrderType">
+				<td class="reviewTableNoBorderRowLeft reviewPhotoData col-xs-1 ml-1"><a target="_blank" href="{{review.author_url}}" ><img class='reviewIcons'  src='{{review.profile_photo_url}}' /></a>
+				</td>
+				<td class="reviewTableNoBorderRowRight col-xs-2">
+					<div >
+						<div><a target="_blank" href="{{review.author_url}}"><b>{{review.author_name}}</b></a></div>
+						
+						<!-- <span  id="infoRatings{{$index}}" class="infoRatings" data-ng-init="dmr.setStar(review.rating,$index)"></span> -->
+						<div class="grey"><rate-yo  rating="review.rating" normalcolor="dmr.fillColor" class="infoRatings"></rate-yo><mydate><small>{{review.time * 1000 | date:'yyyy-MM-dd HH:mm:ss'}}</small></mydate></div>
+						<div>{{review.text}}</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<!-- ng-if="dmr.DataFactory.reviews && dmr.currentReviewType=='Yelp Reviews'"  -->
+<div class="mt-3 fade-in-out" ng-show="dmr.DataFactory.reviews && dmr.currentReviewType=='Yelp Reviews'">
+	<div class="row" >
+		
+		<table class="table table-bordered reviewTable col-sm-12 mx-2">
+		<tr ng-repeat="review in dmr.DataFactory.reviews[1]|orderBy: dmr.currentOrderType">
+			<td class="reviewTableNoBorderRowLeft col-xs-1 ml-1">
+			<a target="_blank" href="{{review.user.image_url}}" ><img class='yelpIcon' src='{{review.user.image_url}}' /></a>
+			</td>
+			<td class="reviewTableNoBorderRowRight col-xs-2">
+				<div>
+						<div><a target="_blank" href="{{review.url}}"><b>{{review.user.name}}</b></a></div>
+						<div class="grey"><rate-yo  rating="review.rating" normalcolor="dmr.fillColor" class="infoRatings"></rate-yo><mydate><small>{{review.time_created}}</small></mydate></div>
+						<div>{{review.text}}</div>
+				</div>
+			</td>
+		</tr>
+		</table>
+	</div>
+	
+</div>
+<!-- <div  class="row"> -->
+	<!-- <div class="col-sm-1"></div> -->
+	<div ng-if='(dmr.currentReviewType=="Yelp Reviews" && (dmr.DataFactory.reviews == null || dmr.DataFactory.reviews.length<2 || dmr.DataFactory.reviews[1].length == 0))||
+    (dmr.currentReviewType=="Google Reviews" && (dmr.DataFactory.reviews == null || dmr.DataFactory.reviews.length <1 || dmr.DataFactory.reviews[0].length == 0))' class='col-sm-12 norecords alert alert-warning'>No Records.</div>
+	<!-- <div class="col-sm-1"></div> -->
+<!-- </div> -->
+
+
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+<!-- <div class="row"> -->
+	<!-- <div class="col-sm-1"></div> -->
+	<!-- <div class="row photoRowClass mt-4">
+	
+	    <div ng-repeat="rowPhotos in dpc.DataFactory.photos" class="flex-column">
+			<div  ng-repeat="photo in rowPhotos">
+                
+				<a target='_blank' href="{{photo.fullSizeUrl}}" ><img src="{{photo.url}}" class="img-fluid img-thumbnail rounded float-left mr-1 mb-1" alt="Image Cannot be Displayed" /></a>
+			</div>
+		</div>
+	    
+	</div> -->
+<div class="image-row mt-3"> 
+  <div class="image-column" ng-repeat="rowPhotos in dpc.DataFactory.photos">
+	<a target='_blank' href="{{photo.fullSizeUrl}}" ng-repeat="photo in rowPhotos" ><img src="{{photo.url}}" style="width:100%"></a>
+  </div>
+</div>
+	<!-- <div class="col-sm-1"></div> -->
+<!-- </div> -->
+<!-- <div  class="row"> -->
+	<!-- <div class="col-sm-1"></div> -->
+	<div ng-if='dpc.DataFactory && (dpc.DataFactory.placeDetails == null || dpc.DataFactory.placeDetails.photos == NULL || dpc.DataFactory.placeDetails.photos.length == 0)' class='col-sm-12 norecords alert alert-warning'>No Records.</div>
+	<!-- <div class="col-sm-1"></div> -->
+<!-- </div> -->
+
+
+</div>

@@ -1,0 +1,117 @@
+<div class="container" data-ng-init="tes.initAutocomplete()">
+
+<div class="row ml-1 mr-1">
+	<div class="col-sm-2 col-xs-0">
+	</div>
+	<div class="col-sm-8 mainDiv">
+		<div class="row mt-3">
+	        <div class="col-xs-0 col-sm-3"></div>
+			<div class="col-xs-12 col-sm-8 col-sm-offset-2 headingText">
+		      <center><p>Travel and Entertainment Search</p></center>
+			</div> 
+		</div>
+		<div class="row">
+			<div class="col-sm-2"></div>
+		
+			<form  id="searchForm" name="searchForm" class="searchForm col-sm-10">
+				<div  class="form-group row required">
+			        <label class="col-sm-3 col-form-label" for="keyword">Keyword</label>
+					<div class="col-sm-8">
+				    	<input type="text" ng-model="tes.searchParams.keyword" class="form-control" name="keyword" id="keyword" required>
+						<div ng-if="searchForm.keyword.$touched && !tes.searchParams.keyword" class="invalid-feedback">
+			        		Please enter a keyword.
+			        	</div> 
+					</div> 
+					
+				</div>
+
+				<div class="form-group row">
+			        <label class="col-sm-3 col-form-label" for="category">Category</label>
+					<div class="col-sm-6">
+				      	<select ng-model="tes.searchParams.type" id="category" class="form-control" name="category">
+							<option SELECTED>Default</option>
+							<option value="airport">Airport</option>
+							<option value="amusement_park" >Amusement Park</option>
+							<option value="aquarium">Aquarium</option>
+							<option value="art_gallery" >Art Gallery</option>
+							<option value="bakery">Bakery</option>
+							<option value="bar">Bar</option>
+							<option value="beauty_salon">Beauty Salon</option>
+							<option value="bowling_alley">Bowling Alley</option>
+							<option value="bus_station">Bus Station</option>
+							<option value="cafe">Cafe</option>
+							<option value="campground">Campground</option>
+							<option value="car_dealer">Car Rental</option>
+							<option value="casino">Casino</option>
+							<option value="lodging">Lodging</option>
+							<option value="movie_theater">Movie Theater</option>
+							<option value="museum">Museum</option>
+							<option value="night_club">Night Club</option>
+							<option value="park">Park</option>
+							<option value="parking">Parking</option>
+							<option value="restaurant">Restaurant</option>
+							<option value="shopping_mall">Shopping Mall</option>
+							<option value="stadium">Stadium</option>
+							<option value="subway_station">Subway Station</option>
+							<option value="taxi_stand">Taxi Stand</option>
+							<option value="train_station">Train Station</option>
+							<option value="transit_station">Transit Station</option>
+							<option value="travel_agency">Travel Agency</option>
+							<option value="zoo">Zoo</option>
+						</select> 
+					</div> 
+				</div>
+				
+				<div class="form-group row">
+			        <label class="col-sm-3 col-form-label" for="distanceInMiles">Distance (miles)</label>
+					<div class="col-sm-6">
+				      <input type="text" ng-model="tes.searchParams.radius" class="form-control" name="distanceInMiles" id="distanceInMiles" placeholder="10">   
+					</div> 
+				</div>
+
+				<fieldset class="form-group required" >
+					<div class="row">
+				        <legend class="col-form-label col-sm-3 pt-0">From</legend>
+						<div class="col-sm-8">
+					        <div class="form-check">
+					          <input class="form-check-input" ng-model="tes.isCurrentLocation" type="radio" name="from" id="here" ng-value="true" ng-checked="tes.isCurrentLocation">
+					          <label class="form-check-label" for="here">
+					            Current Location
+					          </label>
+					        </div>
+					        <div class="form-check">
+					          <input class="form-check-input" ng-checked="!tes.isCurrentLocation" type="radio" ng-model="tes.isCurrentLocation" name="from" id="locationRadio" ng-value="false" ng-change='tes.initAutocomplete()' >
+					          <label class="form-check-label" for="locationRadio">
+					            Other. Please Specify:
+								
+					          </label>
+								<input type="text" class="form-control" ng-model="tes.searchParams.address" placeholder="Enter a location"" id="locationInput" name="locationInput" ng-disabled="tes.isCurrentLocation" ng-required="!tes.isCurrentLocation" ng-focus="tes.geolocate()"\>
+								<div ng-if="searchForm.locationInput.$touched && !tes.searchParams.address && !tes.isCurrentLocation" class="invalid-feedback">
+					        		Please enter a location.
+					        	</div> 
+					        </div>
+						</div>
+					</div>
+				</fieldset>
+				<button type="submit" ng-disabled="!searchForm.$valid || !tes.DataFactory.lat || !tes.DataFactory.lon" ng-click="tes.search()" name="SearchButton" class="btn btn-sm btn-primary"  id="SearchButton" ><i class="fa fa-search"></i> Search</button>
+				<button id="clearBtn" class="btn btn-sm btn-light" ng-click="tes.clear()">Clear</button>
+				
+			</form>
+		</div>
+	</div>
+</div>
+<div class="outerNav pt-3 mb-3 row">
+	<div class="col-sm-5 col-xs-5"></div>
+	
+	<ul class="col-sm-2 col-xs-2 nav nav-pills justify-content-center" role="tablist">
+		  <li class="nav-item">
+		    <a class="nav-link active" data-toggle="tab" role="tab" ng-click="tes.getResults()" href="#">Results</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" data-toggle="tab" role="tab" ng-click="tes.getFavorites()" href="#">Favorite</a>
+		  </li>
+	</ul>
+	
+	<div class="col-sm-5 col-xs-5"></div>
+</div>
+</div>

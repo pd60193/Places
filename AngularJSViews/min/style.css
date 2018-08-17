@@ -1,0 +1,388 @@
+body
+{
+	position: relative;
+	
+}
+
+.mainDiv
+{	
+	background-color: #FAFAFA;
+	margin-top:10px;
+	border: 2px solid #CDCDCD;
+}
+.mainHeading
+{
+	margin-top: 15px;
+	/*margin-left: 80px;*/
+}
+.headingText
+{
+	font-size: 20px;
+	font-weight: bold;
+}
+.searchForm
+{
+	padding-bottom: 20px;
+	
+}
+.col-form-label
+{
+	font-size: 14px;
+}
+.form-control
+{
+	height: 32px;
+}
+.form-group.required .col-form-label:after { 
+   content:"*";
+   color:#AB0000;
+}
+.invalid-feedback
+{
+	display: block;
+	font-weight: 400;
+}
+.btn-light
+{
+	background-color: white;
+	border:1px solid #CDCDCD;
+}
+.outerNav
+{
+	/*padding-top: 25px;
+	margin-bottom: 20px;*/
+}
+.norecords
+{
+	margin-top: 25px;
+}
+.details-padding-fix
+{
+	padding-left: 0px; 
+}
+/* result table html*/
+/*table
+{
+	border:1px solid black;
+	border-collapse: collapse;
+}*/
+.selectedRow
+{
+	background-color: #FDDE9B
+}
+.placeRow:hover
+{
+	background-color:#f1f1f1!important;
+}
+.icons
+{
+	width:34px;
+}
+.yellow
+{
+	color: #FED54A;
+}
+.white
+{
+	color: #FFFFFF;
+}
+.bordered-button
+{
+	border:1px solid black;
+}
+.prevButton
+{
+	margin-right: 10px;
+}
+
+/*Map Related CSS*/
+.mapButtons
+{
+	z-index:2;
+	position: absolute;
+	display: none;
+}
+/*details related css*/
+.mainHeading
+{
+	font-size:18px;
+}
+/* info related css*/
+#detailsNav
+{
+	margin-bottom: 18px;
+}
+.star-ratings {
+	unicode-bidi: bidi-override;
+	color: #e7711b;
+	padding: 0;
+	z-index: 1;
+	display: block;
+	overflow: hidden;  
+	width: 100px;
+}
+#textRating
+{
+	color: black;	
+}
+#infoRatings{
+	display:inline-block!important;
+	margin-top: 5px;
+}
+
+/*.favStar{
+	display:inline-block!important;
+	padding:0px!important;
+	
+}*/
+/*.favButton
+{
+	height: 39px!important;
+}*/
+.favButton:hover .favStar i
+{
+	color:#f1f1f1!important;
+}
+
+/*photo related css*/
+img
+{
+	display: inline-block;
+}
+.photoRow
+{
+	column-count: 4;
+}
+.photoRowClass
+{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.image-row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.image-column {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+}
+
+.image-column img {
+    margin-top: 8px;
+    vertical-align: middle;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+    .image-column {
+        -ms-flex: 50%;
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .image-column {
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/*map related css*/
+#map
+{
+	height: 400px;
+}
+#directionsPanel
+{
+	height: 300px;
+}
+.mapIcon
+{
+	width: 28px;
+	height: 28px;
+	padding: 1px;
+}
+.bordered-button-grey
+{
+	border:1px solid #CDCDCD;
+}
+.suggestedRoutes
+{
+	font-size: 13px;
+}
+.suggestedRoutes:first-child
+{
+	 background-color: rgba(0,0,0,.075);
+}
+.suggestedRoutes > td
+{
+	padding: 2px;
+	border-top:0px;
+	   
+}
+.routesDiv
+{
+	border:1px solid #CDCDCD;
+	padding-left: 2px;
+}
+.routesHeading
+{
+	display: block;
+    margin-bottom: 5px;
+    font-size: .81rem;
+    color: #6c757d;
+    white-space: nowrap;
+}
+.routesTable
+{
+	margin-bottom: 10px;
+}
+#directionsPanel
+{
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+}
+@media print {  
+        #map {  
+          height: 500px;  
+          margin: 0;  
+        }  
+ 
+        #directionsPanel {  
+          float: none;  
+          width: auto;  
+        }  
+      }  
+#directionsPanel>img:first-child
+{
+	background-color: green;
+	
+}
+/*review related css*/
+.reviewIcons
+{
+	width:60px;
+	height: 60px;
+}
+.yelpIcon
+{
+	border-radius: 35px;
+	width:70px;
+	height: 70px;
+}
+.grey
+{
+	color:grey;
+}
+.reviewTable
+{
+	border:none!important;
+}
+.reviewTableNoBorderRowLeft
+{
+	border-right: none !important;
+	border-right-style: none !important;
+}
+.reviewTableNoBorderRowRight
+{
+	border-left: none !important;
+	border-left-style: none !important;
+}
+.infoRatings{
+display:inline-block!important;
+
+}
+/*animation related css*/
+
+.favanim.ng-hide-remove,
+.myanim.ng-hide-remove,
+.myanim.ng-hide-add,
+.favanim.ng-hide-add
+{
+    -webkit-transition:0.5s linear all;
+    -moz-transition:0.5s linear all;
+    -o-transition:0.5s linear all;
+    transition:0.5s linear all;
+    position:absolute;
+}
+.myanim.ng-hide-remove {
+	left:-100%;
+	opacity:1;
+}
+.myanim.ng-hide-add,
+.myanim.ng-hide-remove.ng-hide-remove-active {
+	left:0;
+}
+.myanim.ng-hide-add.ng-hide-add-active {
+	left:-100%;
+	opacity:0;
+}
+.favanim.ng-hide-remove{
+    left:100%;
+    opacity:1;
+}
+.favanim.ng-hide-add.ng-hide-add-active {
+	left: 100%;
+	opacity:0;
+}
+.favanim.ng-hide-add,
+.favanim.ng-hide-remove.ng-hide-remove-active{
+    left:0%;
+}
+.fade-in-out {
+  transition: 1s linear all;  
+  opacity: 1;
+}
+
+.fade-in-out.ng-hide {
+	transition:none;
+  opacity: 0;
+}
+/*.favanim.ng-enter,
+.myanim.ng-enter,
+.myanim.ng-leave,
+.favanim.ng-leave
+{
+    -webkit-transition:0.5s linear all;
+    -moz-transition:0.5s linear all;
+    -o-transition:0.5s linear all;
+    transition:0.5s linear all;
+    position:absolute;
+}
+.myanim.ng-enter {
+	left:-100%;
+	opacity:1;
+}
+.myanim.ng-leave,
+.myanim.ng-enter.ng-enter-active {
+	left:0;
+}
+.myanim.ng-leave.ng-leave-active {
+	left:-100%;
+	opacity:0;
+}
+.favanim.ng-enter{
+    left:100%;
+    opacity:1;
+}
+.favanim.ng-leave.ng-leave-active {
+	left: 100%;
+	opacity:0;
+}
+.favanim.ng-leave,
+.favanim.ng-enter.ng-enter-active{
+    left:0%;
+}*/

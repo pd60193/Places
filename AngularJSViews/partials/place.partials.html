@@ -1,0 +1,90 @@
+<div  class="favanim" ng-show="!pc.DataFactory.startAnimation">
+	
+	<!-- ng-show="pc.DataFactory.showResults" -->
+	
+<!-- 	<div class="row">
+		<div class="col-sm-1 col-xs-0"></div> -->
+		<!-- <div class="container">
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="progress col-sm-10" ng-if="displayLoader">
+				<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{valuenow;}}" aria-valuemin="0" aria-valuemax="100" style="width: {{valuenow}}%;">
+				</div>
+			</div>
+			<div class="col-sm-1"></div>
+		</div>
+		</div> -->
+
+		<div class="container">
+		<div class="progress" ng-if="displayLoader">
+			<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{valuenow;}}" aria-valuemin="0" aria-valuemax="100" style="width: {{valuenow}}%;">
+			</div>
+		</div>
+		</div>
+		<div ng-if='pc.places && pc.places.length != 0' class="container">
+		<!-- <div class="row">
+			<div class="col-sm-10"></div>
+			<div class="col-sm-1 details-padding-fix"> -->
+			
+
+			<button type="button" ng-click="pc.loadMoreDetails()"  ng-disabled="!pc.DataFactory.selectedPlace" class="btn btn-light mb-1 float-right">Details  <i class="fas fa-lg fa-angle-right"></i></button>
+			<!-- </div>
+			<div class="col-sm-1"></div>
+		</div> -->
+		<!-- <div class="col-sm-1"></div> -->
+			<div class="">
+
+				<table class="table">
+					<tr>
+						<th>#</th>
+						<th>Category</th>
+						<th>Name</th>
+						<th>Address</th>
+						<th>Favorite</th>
+						<th>Details</th>
+					</tr>
+					<tr ng-repeat="place in pc.places" class="placeRow" selected-dir selected="pc.DataFactory.selectedPlace && pc.DataFactory.selectedPlace.place_id==place.place_id">
+						<td ng-if="place.name" ><b>{{$index + 1}}</b></td>
+						<td><img ng-src='{{place.icon}}' alt='icon not present' ng-if='place.name' class='icons'></td>
+						<td  ng-if='place.name' ng-bind='place.name'></td>
+						<td ng-if="place.name && place.vicinity">
+							<div  ng-bind='place.vicinity'></div>
+						</td>
+						<td id="favoriteColumn" ng-if='place.name'><button type="button" class="btn btn-light favButton" ng-click='pc.toggleFavorite(place)'>
+						<!-- <i  class="far fa-star"></i> -->
+							<fav-star  class="favStar" setfav="place.fav" displayif="!pc.DataFactory.isFavTab"></fav-star>
+							<i class="fa fa-trash" aria-hidden="true" ng-if="pc.DataFactory.isFavTab"></i>
+						</button></td>
+						<td id="detailsColumn" ng-if='place.name' ng-click='pc.moreDetails(place)'><button type="button"  class="btn btn-light"><i class="fas fa-lg fa-angle-right"></i></button></td>
+					</tr>
+				</table>
+				<!-- <div class="row">
+					<div class="col-sm-5 col-xs-5"></div>
+					<button type="button" ng-click="pc.fetchPreviousPage()" ng-if="pc.PageService.pageNumber>1" class="btn bordered-button col-sm-1 col-xs-1 prevButton">Previous</button>
+					<button type="button" ng-click="pc.fetchNextPage()" ng-if="pc.PageService.nextPageToken ||( pc.PageService.pageNumber && pc.PageService.pageNumber<pc.PageService.pageResultsMap.length)" class="btn bordered-button col-sm-1 col-xs-1">Next</button>
+					<div class="col-sm-5 col-xs-5"></div>
+				</div> -->
+				<center><button type="button" ng-click="pc.fetchPreviousPage()" ng-if="pc.PageService.pageNumber>1 && pc.DataFactory.isFavTab==false" class="btn bordered-button prevButton">Previous</button>
+					<button type="button" ng-click="pc.fetchNextPage()" ng-if="(pc.PageService.nextPageToken ||( pc.PageService.pageNumber && pc.PageService.pageNumber<pc.PageService.pageResultsMap.length)) && pc.DataFactory.isFavTab==false" class="btn bordered-button">Next</button></center>
+			</div>
+		</div>
+		
+		
+		<div  class="container">
+			<!-- <div class="col-sm-1"></div> -->
+			<div ng-if='pc.places && pc.places.length == 0' class='col-sm-12 norecords alert alert-warning'>No Records.</div>
+			<!-- <div class="col-sm-1"></div>
+		</div> -->
+
+		<!-- <div class="row">
+			<div class="col-sm-1"></div> -->
+			<div ng-if='!pc.places && !displayLoader' class='col-sm-12 norecords alert alert-danger'>Failed to get search results.</div>
+			<!-- <div class="col-sm-1"></div> -->
+		</div>
+	
+	<!-- </div> -->
+		<!-- <div class="col-sm-1"></div>
+	</div> -->
+	
+	
+</div>

@@ -1,0 +1,54 @@
+<div class="container">
+<!-- <div class="row">
+<div class="col-sm-1"></div> -->
+<form class="form-row" name="locForm">
+	
+	<div class="col-sm-4 mt-4 mt-sm-1">
+		<label for="from">From</label>
+		<input type="text" class="form-control" id="from"  name="from" ng-model="dmc.from"  required> 
+		<div ng-if="locForm.from.$touched && !dmc.from" class="invalid-feedback">
+	        Please enter a keyword.
+	    </div> 
+	</div>
+	<div class="col-sm-4 mt-1">
+		<label for="to">To</label>
+		<input type="text" class="form-control" ng-model="dmc.to" ng-disabled="true" ng-init="dmc.to=dmc.DataFactory.placeDetails.formatted_address">
+	</div>
+	<div class="col-sm-2 mt-1">
+		<label for="travelMode">Travel Mode</label>
+		<select ng-init="dmc.searchParams.travelMode = dmc.travelModeMappingList[0]" ng-model="dmc.searchParams.travelMode" id="travelMode" class="form-control" name="travelMode" ng-options="travelMode.text for travelMode in dmc.travelModeMappingList track by travelMode.value">
+		</select> 
+	</div>
+	<div class="col-sm-1 mt-2 ml-sm-4 mt-sm-1">
+		<label for="directionsBtn" id="directionsLabel" ng-style="{'visibility' : 'hidden'}">Directions</label>
+		<button type="button" id="directionsBtn" ng-click="dmc.getDirections()" ng-disabled="!dmc.from" class="btn btn-primary">Get Directions</button>
+	</div>
+	<div class="col-sm-1"></div>
+</form>
+<!-- <div class="col-sm-1"></div>
+</div> -->
+</div>
+<div class="container">
+<!-- <div class="row">
+	<div class="col-sm-1"></div> -->
+	<div>
+		<button type="button" ng-click="dmc.toggleStreetView()" class="btn btn-sm bordered-button-grey py-0 mt-2 my-sm-0 px-0"><img src="http://cs-server.usc.edu:45678/hw/hw8/images/Pegman.png" class="mapIcon" /></button>
+	</div>
+</div>
+
+<div class="container mt-2">
+<!-- <div class="row mt-2 ml-1">
+	<div class="col-sm-1"></div> -->
+	<div class="" ng-model="dmc.map" id="map">
+	</div>
+</div>
+<!-- <div class="container mt-2" ng-if='dmc.MapService.panorama && (!dmc.MapService.panorama.projection)'>
+	{{dmc.MapService.panorama.projection && dmc.MapService.panorama.projection == 'undefined}}
+<div  class='col-sm-12 norecords alert alert-warning'>This place does not have a street view. The toggle would show a black screen.</div> -->
+</div>
+<div class="container mt-2">
+<!-- <div class="row mt-2 ml-1">
+	<div class="col-sm-1"></div> -->
+	<div class="" style="width:100%;height 100%" id="directionsPanel">
+	</div>
+</div>

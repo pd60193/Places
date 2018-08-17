@@ -1,0 +1,128 @@
+<div class="myanim" ng-show="dc.DataFactory.startAnimation">
+ <!-- ng-show="dc.DataFactory.showDetails" -->
+	<div class="container">
+		<center><b class="mainHeading">{{dc.DataFactory.selectedPlace.name}}</b></center>
+	</div>
+<!-- 	<div class="container"> -->
+<!-- <div class="row">
+	<div class="col-sm-3"></div>
+	<div class="col-sm-8"><b class="mainHeading">{{dc.DataFactory.selectedPlace.name}}</b></div>
+	<div class="col-sm-2"></div>
+</div> -->
+
+<!-- <div class="row">
+	<div class="col-sm-1 col-xs-1"></div>
+	<div class="col-sm-1 col-xs-1">
+		<button type="button" class="btn btn-light justify-content-end" ng-click="dc.goToList()"><i class="fas fa-lg fa-angle-left"></i> List</button>
+	</div>
+	<div class="col-sm-8 col-xs-8"></div>
+	<div class="col-sm-1 col-xs-1">
+		<button type="button" class="btn btn-light favButton" ng-click='dc.toggleFavorite(dc.DataFactory.selectedPlace)'>
+			<fav-star  class="favStar" setfav="dc.DataFactory.selectedPlace.fav"></fav-star>
+		</button>
+		<a><img src="http://cs-server.usc.edu:45678/hw/hw8/images/Twitter.png" width="40px" /></a>
+	</div>
+	<div class="col-sm-1 col-xs-1"></div>
+</div> -->
+<div class="container">
+	<!-- <div class="col-sm-1 col-xs-1"></div> -->
+
+
+		<button type="button" class="btn btn-light pull-left mb-2" ng-click="dc.goToList()"><i class="fas fa-lg fa-angle-left"></i> List</button>
+		<!-- <div class="col-sm-10"></div> -->
+		<div class="mb-2 float-right">
+		<a class="twitter-share-button justify-content-end ml-1" target="_blank" href="https://twitter.com/intent/tweet?text={{'Check out ' +dc.DataFactory.selectedPlace.name +' located at ' +dc.DataFactory.placeDetails.formatted_address+'. Website: '+dc.DataFactory.placeDetails.website}}&hashtags=TravelAndEntertainmentSearch"
+		><img src="http://cs-server.usc.edu:45678/hw/hw8/images/Twitter.png" width="40px" height="38px" /></a></div>
+		
+		<button type="button" ng-disabled="!dc.DataFactory.placeDetails" class="btn btn-light favButton justify-content-end float-right mb-2" ng-click='dc.toggleFavorite(dc.DataFactory.selectedPlace)'>
+			<fav-star  class="favStar" setfav="dc.DataFactory.selectedPlace.fav"></fav-star>
+		</button>
+		<!-- <a class="justify-content-end ml-1"><img src="http://cs-server.usc.edu:45678/hw/hw8/images/Twitter.png" width="40px" height="38px" /></a> -->
+		
+	</div>
+<!-- 	
+</div> -->
+	<div class="container">
+	<!-- <div class="row" id="detailsNav">
+		<div class="col-sm-1"></div>
+		<div class="col-sm-10"> -->
+			<ul class="nav nav-tabs justify-content-end" role="tablist">
+			    <li class="nav-item">
+			    	<a class="nav-link active" id="infoTab" data-toggle="tab" role="tab" href="#" ng-click="dc.getInfo()">Info</a>
+			  	</li>
+			  	<li class="nav-item">
+			    	<a class="nav-link" id="photoTab" data-toggle="tab" role="tab" href="#" ng-click="dc.getPhotos()">Photo</a>
+			  	</li>
+			  	<li class="nav-item">
+			    	<a class="nav-link" id="mapTab" data-toggle="tab" role="tab" href="#" ng-click="dc.getMap()">Map</a>
+			  	</li>
+			  	<li class="nav-item">
+			    	<a class="nav-link" id="reviewTab" data-toggle="tab" role="tab" href="#" ng-click="dc.getReviews()">Reviews</a>
+			  	</li>
+			</ul>
+	<!-- 	</div>
+	</div> -->
+	</div>
+<div id="randomDiv"></div>
+<div ui-view="detailsView" ></div>
+
+<!-- <div class="row">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-10">
+		<ul class="nav nav-tabs justify-content-end">
+		    <li class="nav-item">
+		    	<a class="nav-link active" href="#">Info</a>
+		  	</li>
+		  	<li class="nav-item">
+		    	<a class="nav-link" href="#">Photo</a>
+		  	</li>
+		  	<li class="nav-item">
+		    	<a class="nav-link" href="#">Map</a>
+		  	</li>
+		  	<li class="nav-item">
+		    	<a class="nav-link" href="#">Reviews</a>
+		  	</li>
+		</ul>
+		<div id="randomDiv"></div>
+		<table id="infoTable" class="table table-striped" >
+		  
+		  <tbody>
+			
+		    <tr ng-if="dc.DataFactory.placeDetails.formatted_address">
+		      <td>Address</td>
+		      <td ng-bind="dc.DataFactory.placeDetails.formatted_address"></td>
+		    </tr>
+		    <tr ng-if="dc.DataFactory.placeDetails.international_phone_number">
+		      <td>Phone Number</td>
+		      <td ng-bind="dc.DataFactory.placeDetails.international_phone_number"></td>
+		    </tr>
+		    <tr ng-if="dc.DataFactory.placeDetails.price_level">
+		      <td>Price Level</td>
+		      <td ng-bind="dc.DataFactory.placeDetails.price_level"></td>
+		    </tr>
+			<tr ng-if="dc.DataFactory.placeDetails.rating">
+		      <td>Rating</td>
+		      <td>
+				<div class="star-ratings">
+					<span id="textRating">{{dc.DataFactory.placeDetails.rating}}</span>
+			  		<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+				</div>
+			  </td>
+		    </tr>
+			<tr ng-if="dc.DataFactory.placeDetails.url">
+		      <td>Google Page</td>
+		      <td><a target="_blank" href="{{dc.DataFactory.placeDetails.url}}" ng-bind="dc.DataFactory.placeDetails.url"></a></td>
+		    </tr>
+			<tr ng-if="dc.DataFactory.placeDetails.website">
+		      <td>Website</td>
+		      <td><a target="_blank" href="{{dc.DataFactory.placeDetails.website}}" ng-bind="dc.DataFactory.placeDetails.website"></a></td>
+		    </tr>
+			<tr ng-if="dc.DataFactory.placeDetails.opening_hours">
+		      <td>Hours</td>
+		      <td ng-bind="dc.DataFactory.placeDetails.opening_hours.open_now?'Open Now':'Closed'"></td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div> -->
+	<div class="col-sm-1"></div>
+</div>
